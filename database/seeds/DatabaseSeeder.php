@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;'); // disable mysql foreign check
+        $this->call(DiscountsTableSeeder::class);
+        $this->call(ProductsTableSeeder::class);
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;'); // enable mysql foreign check
     }
 }
