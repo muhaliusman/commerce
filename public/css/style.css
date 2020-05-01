@@ -1,0 +1,9 @@
+.product-img-wrapper {
+    padding: 5px;
+}
+
+.product-img-wrapper .product-img {
+    object-fit: cover;
+    width: 100%;
+    height: 30vh;
+}
