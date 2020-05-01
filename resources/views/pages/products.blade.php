@@ -21,10 +21,42 @@
                 <p class="card-text">
                     Price : <b>$ {{ $product->price }}</b>
                 </p>
-                <a href="#" class="btn btn-primary">Add To Cart</a>
+                <button data-id="{{ $product->id }}" class="btn btn-primary add-to-cart">Add To Cart</button>
             </div>
         </div>
     </div>
     @endforeach
 </div>
 @stop
+
+@push('script')
+<script>
+$(function() {
+    $('.add-to-cart').on('click', function() {
+        var id = $(this).data('id');
+
+        $.ajax({
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                product: id
+            },
+            url: "cart",
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                alert(data.message);
+                initCart(); // in app.js
+            },
+            statusCode: {
+                404 : function (data) {
+                    alert('Ups product not found');
+                },
+                500 : function (data) {
+                    alert('Ups something wrong');
+                }
+            }
+        });
+    });
+});
+</script>
+@endpush

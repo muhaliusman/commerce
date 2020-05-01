@@ -19,3 +19,10 @@ Route::get('/', function () {
 
 Route::get('products', 'ProductController@index')->name('products.index');
 Route::get('discounts', 'DiscountController@index')->name('discounts.index');
+Route::get('cart', 'CartController@index')->name('cart.index');
+Route::get('cart/total', 'CartController@getTotal')->name('cart.total');
+Route::get('cart/products', 'CartController@getProductsInCart')->name('cart.products');
+Route::post('cart', 'CartController@store')->name('cart.store');
+Route::delete('cart/{product_id}', 'CartController@destroy')->name('cart.destroy');
+Route::put('cart/{product_id}/qty', 'CartController@updateQty')->name('cart.update.qty');
+Route::put('cart/{product_id}/discount', 'CartController@updateDiscount')->name('cart.update.discount');
