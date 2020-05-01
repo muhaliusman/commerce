@@ -229,6 +229,7 @@ class CartController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         } else {
             unset($cart[$idxProd]);
+            $cart = array_values($cart);
         }
 
         Cache::forever('cart', $cart);
