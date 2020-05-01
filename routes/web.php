@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('products', 'ProductController@index')->name('products.index');
+Route::get('discounts', 'DiscountController@index')->name('discounts.index');

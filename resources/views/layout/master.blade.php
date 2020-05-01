@@ -24,8 +24,8 @@
                     <li class="nav-item @if(url()->current() == route('products.index')) active @endif">
                         <a class="nav-link" href="#">History Order</a>
                     </li>
-                    <li class="nav-item @if(url()->current() == route('products.index')) active @endif">
-                        <a class="nav-link" href="#">Discount List</a>
+                    <li class="nav-item @if(url()->current() == route('discounts.index')) active @endif">
+                        <a class="nav-link" href="{{ route('discounts.index') }}">Discount List</a>
                     </li>
                     <li class="nav-item @if(url()->current() == route('products.index')) active @endif">
                         <a class="nav-link" href="#">Cart <span class="badge badge-danger">0</span></a>
