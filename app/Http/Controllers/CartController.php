@@ -128,7 +128,7 @@ class CartController extends Controller
         $newQty = $request->qty ?? 0;
         if (!is_numeric($newQty)) {
             return response()->json([
-                'success' => true,
+                'success' => false,
                 'message' => 'QTY must a numeric value'
             ], Response::HTTP_BAD_REQUEST);
         }
@@ -136,7 +136,7 @@ class CartController extends Controller
         $idxProd = array_search($productId, array_column($cart, 'product_id'));
         if ($idxProd === false) {
             return response()->json([
-                'success' => true,
+                'success' => false,
                 'message' => 'Product not available in the cart'
             ], Response::HTTP_BAD_REQUEST);
         } else {
@@ -164,7 +164,7 @@ class CartController extends Controller
         $discountCode = $request->discount_code ?? 0;
         if (!$discount = Discount::where('discount_code', $discountCode)->first()) {
             return response()->json([
-                'success' => true,
+                'success' => false,
                 'message' => 'Discount code not found'
             ], Response::HTTP_BAD_REQUEST);
         }
@@ -172,7 +172,7 @@ class CartController extends Controller
         $idxProd = array_search($productId, array_column($cart, 'product_id'));
         if ($idxProd === false) {
             return response()->json([
-                'success' => true,
+                'success' => false,
                 'message' => 'Product not available in the cart'
             ], Response::HTTP_BAD_REQUEST);
         } else {
@@ -202,7 +202,7 @@ class CartController extends Controller
         $idxProd = array_search($productId, array_column($cart, 'product_id'));
         if ($idxProd === false) {
             return response()->json([
-                'success' => true,
+                'success' => false,
                 'message' => 'Product not available in the cart'
             ], Response::HTTP_BAD_REQUEST);
         } else {

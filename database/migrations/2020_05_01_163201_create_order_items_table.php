@@ -19,15 +19,17 @@ class CreateOrderItemsTable extends Migration
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products');
-            $table->foreignId('discount_id');
+            $table->foreignId('discount_id')
+                ->nullable();
             $table->foreign('discount_id')
                 ->references('id')
-                ->on('discounts');
+                ->on('discounts')
+                ->onDelete('SET NULL');
             $table->tinyInteger('qty')
                 ->default(0);
             $table->double('price')
                 ->default('0');
-            $table->double('discount')
+            $table->double('discount_value')
                 ->default('0');
             $table->timestamps();
         });

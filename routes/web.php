@@ -26,3 +26,5 @@ Route::post('cart', 'CartController@store')->name('cart.store');
 Route::delete('cart/{product_id}', 'CartController@destroy')->name('cart.destroy');
 Route::put('cart/{product_id}/qty', 'CartController@updateQty')->name('cart.update.qty');
 Route::put('cart/{product_id}/discount', 'CartController@updateDiscount')->name('cart.update.discount');
+Route::post('order', 'OrderController@store')->name('order.store');
+Route::get('order', 'OrderController@index')->name('order.index');

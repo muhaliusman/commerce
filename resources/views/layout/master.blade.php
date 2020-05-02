@@ -22,8 +22,8 @@
                     <li class="nav-item @if(url()->current() == route('products.index')) active @endif">
                         <a class="nav-link" href="{{ route('products.index') }}">Product List</a>
                     </li>
-                    <li class="nav-item @if(url()->current() == route('products.index')) active @endif">
-                        <a class="nav-link" href="#">History Order</a>
+                    <li class="nav-item @if(url()->current() == route('order.index')) active @endif">
+                        <a class="nav-link" href="{{ route('order.index') }}">History Order</a>
                     </li>
                     <li class="nav-item @if(url()->current() == route('discounts.index')) active @endif">
                         <a class="nav-link" href="{{ route('discounts.index') }}">Discount List</a>

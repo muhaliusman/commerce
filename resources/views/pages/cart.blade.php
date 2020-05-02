@@ -30,6 +30,11 @@
         </div>
     </div>
 </div>
+<div class="row justify-content-center">
+    <div class="col-12 col-md-10 text-right">
+        <button type="button" class="btn btn-primary btn-sm" id="process-order">Process</button>
+    </div>
+</div>
 <div class="modal" id="modal-qty">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -195,6 +200,29 @@ $(function() {
             dataType: "json",
             success: function (data) {
                 initTable();
+            },
+            statusCode: {
+                400 : function (data) {
+                    alert(data.responseJSON.message);
+                },
+                500 : function (data) {
+                    alert('Ups something wrong');
+                }
+            }
+        });
+    });
+
+    $('#process-order').on('click', function() {
+        $.ajax({
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "order",
+            type: "post",
+            dataType: "json",
+            success: function (data) {
+                alert(data.message);
+                window.location.href = "order";
             },
             statusCode: {
                 400 : function (data) {

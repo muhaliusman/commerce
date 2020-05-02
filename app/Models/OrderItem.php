@@ -11,8 +11,9 @@ class OrderItem extends Model
         'discount_id',
         'qty',
         'price',
-        'discount'
+        'discount_value'
     ];
+    protected $appends = ['total_price', 'price_after_discount'];
 
     /**
      * Relation products table
@@ -28,5 +29,21 @@ class OrderItem extends Model
     public function discount()
     {
         return $this->belongsTo('App\Models\Discount', 'discount_id');
+    }
+
+    /**
+     * Accessor total price
+     */
+    public function getTotalPriceAttribute()
+    {
+        return $this->qty * $this->price;
+    }
+
+    /**
+     * Accessor total price after discount
+     */
+    public function getPriceAfterDiscountAttribute()
+    {
+        return $this->qty * $this->price - $this->discount_value;
     }
 }
